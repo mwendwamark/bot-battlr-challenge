@@ -16,14 +16,16 @@ const BotCard = ({ bot, action, removeCard }) => {
   }
 
   function handleRemove(e) {
-    console.log("Red X Clicked!");
+    // console.log("Red X Clicked!");
     e.stopPropagation();
     removeCard(bot);
   }
 
   const botTypeStyle = {
     fontSize: "18px",
-    marginLeft: "5px"
+    marginLeft: "5px",
+    color: "red",
+    backgroundColor: "red"
   };
 
   const cardStyle = {
@@ -48,16 +50,29 @@ const BotCard = ({ bot, action, removeCard }) => {
     width: "100%",
     height: "100%",
     objectFit: "cover",
-    borderRadius: "5px"
+    borderRadius: "5px",
+    border: "1px solid red",
+    overflow: "hidden",
+    display: "block",
+    // backgroundImage: `url(${bot.avatar_url})`,
+    backgroundSize: "cover",
+   backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
+    backgroundBlendMode: "multiply"
+
+
   };
 
   return (
+    <>
     <div
       className="bot-card"
       key={bot.id}
       onClick={handleClick}
       style={{ display: "inline-block", marginRight: "10px", ...cardStyle }}
-    >
+    > 
+    {/* <h3>Add me to your army for incredible results</h3> */}
       <div className="image" style={{ height: "250px", overflow: "hidden" }}>
         <img alt="cartoon-robots" src={bot.avatar_url} style={imageStyle} />
       </div>
@@ -72,16 +87,16 @@ const BotCard = ({ bot, action, removeCard }) => {
       </div>
       <div className="icon">
         <span>
-          <i className="icon heartbeat" />
+          <i className="heartbeat" />
           {bot.health}
         </span>
 
         <span>
-          <i className="icon lightning" />
+          <i className=" lightning" />
           {bot.damage}
         </span>
         <span>
-          <i className="icon shield" />
+          <i className=" shield" />
           {bot.armor}
         </span>
         <span>
@@ -97,6 +112,8 @@ const BotCard = ({ bot, action, removeCard }) => {
         </span>
       </div>
     </div>
+    
+    </>
   );
 };
 

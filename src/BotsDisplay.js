@@ -3,7 +3,7 @@ import BotCollection from './BotCollection'
 import BotArmy from './YourBotArmy'
 import BotSpecs from './BotSpecs'
 
-function BotsPage() {
+function BotsDisplay() {
   const [botCollection, setBotCollection] = useState([]);
   const [filteredCollection, setFilteredCollection] = useState([]);
   const [botArmy, setBotArmy] = useState([]);
@@ -16,14 +16,6 @@ function BotsPage() {
       .then(bots => {
         setBotCollection(bots);
         setFilteredCollection(bots);
-        // setBotArmy(bots);
-        console.log(bots);
-        console.log(filteredCollection);
-        console.log(botArmy);
-        console.log(collectionVisible);
-        console.log(botSpecs);
-
-
       })
   }, []);
 
@@ -32,6 +24,10 @@ function BotsPage() {
     setFilteredCollection(newCollection);
     setBotArmy([...botArmy, bot]);
     setCollectionVisible(true);
+
+    // Add the bot to filteredCollection so that it is still displayed
+    const newFilteredCollection = [...filteredCollection, bot];
+    setFilteredCollection(newFilteredCollection);
   }
 
   const removeFromArmy = (bot) => {
@@ -77,4 +73,4 @@ function BotsPage() {
   )
 }
 
-export default BotsPage
+export default BotsDisplay
