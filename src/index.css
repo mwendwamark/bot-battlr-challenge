@@ -11,3 +11,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.text-wrap {
+  word-wrap: break-word;
+}
+.image {
+  height: 200px;
+  /* set a fixed height */
+  overflow: hidden;
+  /* hide any overflowing content */
+  display: flex;
+  /* use flexbox to center the image vertically and horizontally */
+  justify-content: center;
+  align-items: center;
+}
+
+.image img {
+  max-width: 100%;
+  /* make sure the image is not wider than its parent */
+  max-height: 100%;
+  /* make sure the image is not taller than its parent */
+}
