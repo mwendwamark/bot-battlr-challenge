@@ -189,3 +189,87 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 }
+.ui.segment {
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem;
+  padding: 2rem;
+}
+
+.ui.two.column.centered.grid {
+  margin-top: 2rem;
+}
+
+.ui.two.column.centered.grid>.row {
+  padding: 1rem;
+}
+
+.ui.medium.circular.image.bordered {
+  border-radius: 50%;
+  border: 4px solid #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  text-transform: capitalize;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.catchphrase {
+  margin-top: 1rem;
+}
+
+.bot-specs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.bot-specs>.ui.segment {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.bot-specs>.ui.segment .column {
+  text-align: center;
+}
+
+.bot-specs>.ui.segment .column i {
+  font-size: 2rem;
+}
+
+.bot-specs>.ui.segment .column strong {
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+button.ui.button.fluid {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  background-color: #212121;
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem 2rem;
+  transition: background-color 0.3s ease-out;
+}
+
+button.ui.button.fluid:hover {
+  background-color: #424242;
+  cursor: pointer;
+}
+.bot-collection {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}

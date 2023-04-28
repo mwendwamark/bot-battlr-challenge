@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 
 const botTypeClasses = {
   Assault: "assasin",
@@ -10,6 +10,13 @@ const botTypeClasses = {
 }
 
 const BotSpecs = ({ bot, back, enlist }) => {
+  const [buttonClicked, setButtonClicked] = useState(false);
+
+  const handleClick = () => {
+    setButtonClicked(true);
+    enlist(bot);
+  }
+
   return (
     <div className="ui segment">
       <div className="ui two column centered grid">
@@ -50,8 +57,10 @@ const BotSpecs = ({ bot, back, enlist }) => {
                 </div>
               </div>
             </div>
-            <button className="ui button fluid" onClick={() => back()}>   Go Back  </button>  
-            <button className="ui button fluid" onClick={() => enlist(bot)}>Add robot </button>
+            <button className="ui button fluid" onClick={() => back()}>Go Back</button>  
+            <button className={`ui button fluid ${buttonClicked ? 'disabled' : ''}`} onClick={() => handleClick()}>
+              {buttonClicked ? 'Added' : 'Add robot'}
+            </button>
           </div>
         </div>
       </div>
@@ -60,8 +69,3 @@ const BotSpecs = ({ bot, back, enlist }) => {
 }
 
 export default BotSpecs
- 
-            
-            
-            
-        

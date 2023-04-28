@@ -1,18 +1,18 @@
-import React from 'react'
-import BotCard from "./BotCard"
+import React from 'react';
+import BotCard from './BotCard';
 
-export default function BotCollection({ botCollection, action, removeCard }) {
-  const displayBotCards = botCollection.map(bot => {
-    return <BotCard bot={bot} action={action} removeCard={removeCard} />
-  })
-
+function BotCollection({ botCollection, action, removeCard }) {
   return (
-    <div>
-      <div className="row">
-        {displayBotCards}
-         <p>There are no more bots to Pick.</p> 
-      </div>
+    <div className="bot-collection">
+      {botCollection.length > 0 ? (
+        botCollection.map(bot => (
+          <BotCard key={bot.id} bot={bot} action={action} removeCard={removeCard} />
+        ))
+      ) : (
+        <p>There are no more bots to pick.</p>
+      )}
     </div>
-  )
+  );
 }
 
+export default BotCollection;

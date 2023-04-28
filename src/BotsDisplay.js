@@ -29,6 +29,28 @@ function BotsDisplay() {
     const newFilteredCollection = [...filteredCollection, bot];
     setFilteredCollection(newFilteredCollection);
   }
+  // const needToAddToArmy = (bot) => {
+  // // Check if the bot is already in the army
+  // const isInArmy = botArmy.some((b) => b.id === bot.id);
+
+  // if (!isInArmy) {
+  //   // Add the bot to the army
+  //   setBotArmy([...botArmy, bot]);
+
+  //   // Remove the bot from the filtered collection
+  //   const newFilteredCollection = filteredCollection.filter(
+  //     (card) => card.id !== bot.id
+  //   );
+  //   setFilteredCollection(newFilteredCollection);
+
+  //   // Remove the bot from the bot collection
+  //   const newBotCollection = botCollection.filter(
+  //     (card) => card.id !== bot.id
+  //   );
+  //   setBotCollection(newBotCollection);
+//   }
+// };
+
 
   const removeFromArmy = (bot) => {
     const newArmy = botArmy.filter(card => card.id !== bot.id)
