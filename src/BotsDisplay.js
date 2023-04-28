@@ -16,7 +16,14 @@ function BotsPage() {
       .then(bots => {
         setBotCollection(bots);
         setFilteredCollection(bots);
-        console.log("Bots Fetched!");
+        // setBotArmy(bots);
+        console.log(bots);
+        console.log(filteredCollection);
+        console.log(botArmy);
+        console.log(collectionVisible);
+        console.log(botSpecs);
+
+
       })
   }, []);
 

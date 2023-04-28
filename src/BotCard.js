@@ -90,7 +90,8 @@ const BotCard = ({ bot, action, removeCard }) => {
               className="ui mini red button"
               onClick={handleRemove}
             >
-              x
+              
+              Remove
             </button>
           </div>
         </span>
