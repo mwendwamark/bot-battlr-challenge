@@ -1,120 +1,76 @@
-import React from "react";
+import React from "react"
 
 const botTypeClasses = {
-  Assault: "assasin",
-  Defender: "Defender",
-  Support: "support",
-  Medic: "doctor",
-  Witch: "Witch doctor",
-  Captain: "Captain"
-};
+  Assault: "icon military",
+  Defender: "icon shield",
+  Support: "icon plus circle",
+  Medic: "icon ambulance",
+  Witch: "icon magic",
+  Captain: "icon star"
+}
 
-const BotCard = ({ bot, action, removeCard }) => {
+const BotCard = props => {
+  const { bot, action, removeCard } = props
+
   function handleClick(e) {
-    e.stopPropagation();
-    action(bot);
+       e.stopPropagation()
+    action(bot)
   }
 
-  function handleRemove(e) {
-    // console.log("Red X Clicked!");
-    e.stopPropagation();
-    removeCard(bot);
+  function handleDischarge(e) {
+   
+    e.stopPropagation()
+    removeCard(bot)
   }
 
-  const botTypeStyle = {
-    fontSize: "18px",
-    marginLeft: "5px",
-    color: "red",
-    backgroundColor: "red"
-  };
-
-  const cardStyle = {
-    display: "grid",
-    gridTemplateRows: "1fr 1fr 50px",
-    gridTemplateColumns: "1fr",
-    gap: "10px",
-    width: "250px",
-    height: "350px",
-    padding: "20px",
-    border: "1px solid #ddd",
-    borderRadius: "5px",
-    boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
-    cursor: "pointer",
-    transition: "transform 0.2s ease-in-out",
-    "&:hover": {
-      transform: "scale(1.02)"
-    }
-  };
-
-  const imageStyle = {
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    borderRadius: "5px",
-    border: "1px solid red",
-    overflow: "hidden",
-    display: "block",
-    // backgroundImage: `url(${bot.avatar_url})`,
-    backgroundSize: "cover",
-   backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundAttachment: "fixed",
-    backgroundBlendMode: "multiply"
-
-
-  };
 
   return (
-    <>
-    <div
-      className="bot-card"
-      key={bot.id}
-      onClick={handleClick}
-      style={{ display: "inline-block", marginRight: "10px", ...cardStyle }}
-    > 
-    {/* <h3>Add me to your army for incredible results</h3> */}
-      <div className="image" style={{ height: "250px", overflow: "hidden" }}>
-        <img alt="cartoon-robots" src={bot.avatar_url} style={imageStyle} />
-      </div>
-      <div className="content">
-        <div className="header">
-          {bot.name}
-          <i className={botTypeClasses[bot.bot_class]} style={botTypeStyle} />
+    <div className="ui column">
+      <div
+        className="ui card"
+        key={props.bot.id}
+        onClick={handleClick}
+      >
+        <div className="image">
+          <img alt="oh no!" src={props.bot.avatar_url} />
         </div>
-        <div>
-          <small>{bot.catchphrase}</small>
-        </div>
-      </div>
-      <div className="icon">
-        <span>
-          <i className="heartbeat" />
-          {bot.health}
-        </span>
-
-        <span>
-          <i className=" lightning" />
-          {bot.damage}
-        </span>
-        <span>
-          <i className=" shield" />
-          {bot.armor}
-        </span>
-        <span>
-          <div className="ui center aligned segment basic">
-            <button
-              className="ui mini red button"
-              onClick={handleRemove}
-            >
-              
-              Remove
-            </button>
+        <div className="content">
+          <div className="header">
+            {props.bot.name}
+            <i className={botTypeClasses[props.bot.bot_class]} />
           </div>
-        </span>
-      </div>
-    </div>
-    
-    </>
-  );
-};
+          <div className="meta text-wrap">
+            <small>{props.bot.catchphrase}</small>
+          </div>
+        </div>
+        <div className="extra content">
+          <span>
+            <i className="icon heartbeat" />
+            {props.bot.health}
+          </span>
 
-export default BotCard;
+          <span>
+            <i className="icon lightning" />
+            {props.bot.damage}
+          </span>
+          <span>
+            <i className="icon shield" />
+            {props.bot.armor}
+          </span>
+          <span>
+            <div className="ui center aligned segment basic">
+              <button
+                className="ui mini red button"
+                onClick={handleDischarge}
+              >
+                remove
+              </button>
+            </div>
+          </span>
+        </div>
+      </div>
+    </div >
+  )
+}
+
+export default BotCard

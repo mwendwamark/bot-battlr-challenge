@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react"
-import BotCollection from './BotCollection'
-import BotArmy from './YourBotArmy'
-import BotSpecs from './BotSpecs'
+import React, { useState, useEffect } from "react";
+import BotCollection from "./BotCollection";
+import BotArmy from "./YourBotArmy";
+import BotSpecs from "./BotSpecs";
 
-function BotsDisplay() {
+const BotsDisplay = () => {
   const [botCollection, setBotCollection] = useState([]);
   const [filteredCollection, setFilteredCollection] = useState([]);
   const [botArmy, setBotArmy] = useState([]);
@@ -11,88 +11,78 @@ function BotsDisplay() {
   const [botSpecs, setBotSpecs] = useState({});
 
   useEffect(() => {
-    fetch('http://localhost:3000/bots')
-      .then(response => response.json())
-      .then(bots => {
+    fetch("http://localhost:3000/bots")
+      .then((response) => response.json())
+      .then((bots) => {
         setBotCollection(bots);
         setFilteredCollection(bots);
-      })
+        console.log("Bots Fetched!");
+      });
   }, []);
 
   const addToArmy = (bot) => {
-    const newCollection = filteredCollection.filter(card => card.bot_class !== bot.bot_class)
+    const newCollection = filteredCollection.filter(
+      (card) => card.bot_class !== bot.bot_class
+    );
     setFilteredCollection(newCollection);
     setBotArmy([...botArmy, bot]);
     setCollectionVisible(true);
-
-    // Add the bot to filteredCollection so that it is still displayed
-    const newFilteredCollection = [...filteredCollection, bot];
-    setFilteredCollection(newFilteredCollection);
-  }
-  // const needToAddToArmy = (bot) => {
-  // // Check if the bot is already in the army
-  // const isInArmy = botArmy.some((b) => b.id === bot.id);
-
-  // if (!isInArmy) {
-  //   // Add the bot to the army
-  //   setBotArmy([...botArmy, bot]);
-
-  //   // Remove the bot from the filtered collection
-  //   const newFilteredCollection = filteredCollection.filter(
-  //     (card) => card.id !== bot.id
-  //   );
-  //   setFilteredCollection(newFilteredCollection);
-
-  //   // Remove the bot from the bot collection
-  //   const newBotCollection = botCollection.filter(
-  //     (card) => card.id !== bot.id
-  //   );
-  //   setBotCollection(newBotCollection);
-//   }
-// };
-
+  };
 
   const removeFromArmy = (bot) => {
-    const newArmy = botArmy.filter(card => card.id !== bot.id)
-    const armyClasses = newArmy.map(bot => bot.bot_class)
-    const newCollection = botCollection.filter(bot => !armyClasses.includes(bot.bot_class))
+    const newArmy = botArmy.filter((card) => card.id !== bot.id);
+    const armyClasses = newArmy.map((bot) => bot.bot_class);
+    const newCollection = botCollection.filter(
+      (bot) => !armyClasses.includes(bot.bot_class)
+    );
     setBotArmy(newArmy);
     setFilteredCollection(newCollection);
-  }
+  };
 
   const removeBotPermanently = (bot) => {
-    const newCollection = botCollection.filter(card => card !== bot)
-    const newFilteredCollection = filteredCollection.filter(card => card !== bot)
-    const newArmy = botArmy.filter(card => card !== bot)
-
+    let newCollection = botCollection.filter((card) => card !== bot);
+    let newFilteredCollection = filteredCollection.filter(
+      (card) => card !== bot
+    );
+    let newArmy = botArmy.filter((card) => card !== bot);
     setBotCollection(newCollection);
     setFilteredCollection(newFilteredCollection);
     setBotArmy(newArmy);
 
     fetch(`http://localhost:3000/bots/${bot.id}`, {
-      method: 'DELETE'
-    }).then(response => response.json())
-      .then(result => console.log(result))
-  }
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result));
+  };
 
   const displayBotSpecs = (bot) => {
     setCollectionVisible(false);
     setBotSpecs(bot);
-  }
+  };
 
   const displayBotCollection = () => {
     setCollectionVisible(true);
-  }
+  };
 
   return (
     <div>
-      <BotArmy bots={botArmy} action={removeFromArmy} removeCard={removeBotPermanently} />
-      {collectionVisible
-        ? <BotCollection botCollection={filteredCollection} action={displayBotSpecs} removeCard={removeBotPermanently} />
-        : <BotSpecs bot={botSpecs} back={displayBotCollection} enlist={addToArmy} />
-      }
+      <BotArmy
+        bots={botArmy}
+        action={removeFromArmy}
+        removeCard={removeBotPermanently}
+      />
+      {collectionVisible ? (
+        <BotCollection
+          botCollection={filteredCollection}
+          action={displayBotSpecs}
+          removeCard={removeBotPermanently}
+        />
+      ) : (
+        <BotSpecs bot={botSpecs} back={displayBotCollection} enlist={addToArmy} />
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default BotsDisplay
+export default BotsDisplay;
