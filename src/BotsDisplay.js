@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import BotCollection from './BotCollection'
-import BotArmy from './YourBotArmy'
+import YourBotArmy from './YourBotArmy'
 import BotSpecs from './BotSpecs'
 
 
@@ -66,7 +66,7 @@ function BotsDisplay() {
   }
   return (
     <div>
-      <BotArmy bots={botArmy} action={removeFromArmy} removeCard={removeBotPermanently} />
+      <YourBotArmy bots={botArmy} action={removeFromArmy} removeCard={removeBotPermanently} />
       {collectionVisible
         ? <BotCollection botCollection={filteredCollection} action={displayBotSpecs} removeCard={removeBotPermanently} />
         : <BotSpecs bot={botSpecs} back={displayBotCollection} enlist={addToArmy} />

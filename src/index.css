@@ -294,13 +294,13 @@ button.ui.button.fluid:hover {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   transition: all 0.2s ease-in-out;
   cursor: pointer;  
-  background-color: #212121;
+  background-color: black;
   color: #fff;
   border: dotted;
   border-width: 2px;
   padding: 1rem 1rem;
   /* rotate:45deg; */
-  scale:0.9;
+  scale:o.2;
   /* translate: 1; */
 }
 
