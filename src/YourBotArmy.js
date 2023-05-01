@@ -8,6 +8,7 @@ function YourBotArmy({ bots, action, removeCard }) {
         bot={bot} 
         action={action} 
         removeCard={removeCard} 
+        key={bot.id}
       />
     );
   });
@@ -22,12 +23,15 @@ function YourBotArmy({ bots, action, removeCard }) {
 
   const headerStyle = {
     textAlign: "center",
-    margin: "10px"
+    margin: "10px",
+    fontSize: "2rem",
+    color: "#fff",
+    textShadow: "1px 1px 2px rgba(0,0,0,0.5)"
   };
 
   return (
     <div className="ui segment inverted olive bot-army">
-      <h2 style={headerStyle}>Your bot army</h2>
+      <h2 style={headerStyle}>Your Bot Army</h2>
       <div className="ui three column grid" style={armyStyle}>
         {displayBots}
       </div>

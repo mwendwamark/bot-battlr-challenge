@@ -1,12 +1,13 @@
 import React from "react"
+import "./index.css" 
 
 const botTypeClasses = {
-  Assault: "icon military",
-  Defender: "icon shield",
-  Support: "icon plus circle",
-  Medic: "icon ambulance",
-  Witch: "icon magic",
-  Captain: "icon star"
+ Assault: "assasin",
+  Defender: "Defender",
+  Support: "support",
+  Medic: "doctor",
+  Witch: "Witch doctor",
+  Captain: "Captain ",
 }
 
 const BotCard = props => {

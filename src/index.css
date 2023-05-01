@@ -64,6 +64,16 @@ body {
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
+  position: relative;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+
+  
 }
 
 .bot-card:hover {
@@ -140,7 +150,7 @@ body {
 
 }
 
-/* .bot-card .ui.red.button {
+.bot-card .ui.red.button {
   background-color: #db2828;
   color: #fff;
   border-color: #db2828;
@@ -163,7 +173,7 @@ body {
 } */
 
 /* YourBotArmy styling */
-.your-bot-army {
+ .your-bot-army {
   margin-top: 30px;
 }
 
@@ -266,10 +276,83 @@ button.ui.button.fluid {
 
 button.ui.button.fluid:hover {
   background-color: #424242;
-  cursor: pointer;
+  cursor: pointer; 
 }
 .bot-collection {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
+}
+.ui.card {
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.ui.card:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;  
+  background-color: #212121;
+  color: #fff;
+  border: dotted;
+  border-width: 2px;
+  padding: 1rem 1rem;
+  /* rotate:45deg; */
+  scale:0.9;
+  /* translate: 1; */
+}
+
+.ui.card .image img {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.ui.card .content {
+  padding: 20px;
+}
+
+.ui.card .header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.ui.card .header i {
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.ui.card .meta {
+  margin-bottom: 10px;
+  color: #999;
+}
+
+.ui.card .meta small {
+  font-style: italic;
+}
+
+.ui.card .extra.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #999;
+}
+
+.ui.card .extra.content span i {
+  margin-right: 5px;
+}
+
+.ui.card .extra.content span:nth-child(2) {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.ui.card .extra.content button {
+  border-radius: 5px;
 }
